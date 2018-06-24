@@ -1,0 +1,15 @@
+ffi canvas_FFI
+clientOnly Canvas_FFI.make_rgb
+clientOnly Canvas_FFI.getContext2d
+clientOnly Canvas_FFI.setFillStyle
+clientOnly Canvas_FFI.fillRect
+clientOnly Canvas_FFI.drawImage
+jsFunc Canvas_FFI.make_rgb=UrWeb.Canvas.make_rgb
+jsFunc Canvas_FFI.getContext2d=UrWeb.Canvas.getContext2d
+jsFunc Canvas_FFI.setFillStyle=UrWeb.Canvas.setFillStyle
+jsFunc Canvas_FFI.fillRect=UrWeb.Canvas.fillRect
+jsFunc Canvas_FFI.drawImage=UrWeb.Canvas.drawImage
+file /cvjsuw.js canvas.js
+script /cvjsuw.js
+
+canvas
