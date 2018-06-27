@@ -36,7 +36,7 @@ var UrWeb = {
 	requestAnimationFrame2: function(fn) {
 	    var frameFn = null;
 	    frameFn = function() {
-		execF(fn, []);
+		execF(execF(fn));
 		window.requestAnimationFrame(frameFn);	
 	    };
 	    
