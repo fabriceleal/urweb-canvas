@@ -1,0 +1,6 @@
+allow url https://mdn.mozillademos.org/files/1443/Canvas_moon.png
+allow url https://mdn.mozillademos.org/files/1429/Canvas_earth.png
+allow url https://mdn.mozillademos.org/files/1456/Canvas_sun.png
+library ../src/canvas
+
+demos

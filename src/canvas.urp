@@ -4,11 +4,19 @@ clientOnly Canvas_FFI.getContext2d
 clientOnly Canvas_FFI.setFillStyle
 clientOnly Canvas_FFI.fillRect
 clientOnly Canvas_FFI.drawImage
+clientOnly Canvas_FFI.drawImage2
+clientOnly Canvas_FFI.requestAnimationFrame
+clientOnly Canvas_FFI.requestAnimationFrame2
+clientOnly Canvas_FFI.make_img
 jsFunc Canvas_FFI.make_rgb=UrWeb.Canvas.make_rgb
 jsFunc Canvas_FFI.getContext2d=UrWeb.Canvas.getContext2d
 jsFunc Canvas_FFI.setFillStyle=UrWeb.Canvas.setFillStyle
 jsFunc Canvas_FFI.fillRect=UrWeb.Canvas.fillRect
 jsFunc Canvas_FFI.drawImage=UrWeb.Canvas.drawImage
+jsFunc Canvas_FFI.drawImage2=UrWeb.Canvas.drawImage2
+jsFunc Canvas_FFI.requestAnimationFrame=UrWeb.Canvas.requestAnimationFrame
+jsFunc Canvas_FFI.requestAnimationFrame2=UrWeb.Canvas.requestAnimationFrame2
+jsFunc Canvas_FFI.make_img=UrWeb.Canvas.make_img
 file /cvjsuw.js canvas.js
 script /cvjsuw.js
 
