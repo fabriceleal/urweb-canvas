@@ -12,10 +12,10 @@ fun main () =
 
 	    let
 		fun draw () =
-		    (**
+		    
 		    setGlobalCompositeOperation ctx DestinationOver;
 		    clearRect ctx 0 0 300 300;
-
+(**
 		    setFillStyle ctx (make_rgba 0 0 0 0.4);
 		    setStrokeStyle ctx (make_rgba 0 153 255 0.4);
 		    save ctx;

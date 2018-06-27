@@ -11,6 +11,12 @@ var UrWeb = {
 	    return e.getContext('2d');
 	},
 
+	clearRect: function(ctx2d, x, y, width, height) {
+	    if(ctx2d == null) er("no ctx2d supplied");
+            
+	    ctx2d.clearRect(x, y, width, height);
+	},
+
 	fillRect: function(ctx2d, x, y, width, height) {
 	    if(ctx2d == null) er("no ctx2d supplied");
             
@@ -64,7 +70,17 @@ var UrWeb = {
 	    if(img == null) er("no img supplied");
 	    
 	    ctx2d.drawImage(img, destX, destY, destW, destH);
+	},
+	
+	setGlobalCompositeOperation: function (ctx2d, compOp) {
+	    var compOps = {
+		DestinationOver: 'destination-over',
+		// TODO add the rest. this seems more reasonable than to transform the string everytime
+		// setGlobalComposite is called
+	    };
+	    
+	    ctx2d.globalCompositeOperation = compOps[compOp];
 	}
-
+	
     }
 };

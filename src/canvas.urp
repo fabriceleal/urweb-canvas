@@ -8,6 +8,8 @@ clientOnly Canvas_FFI.drawImage2
 clientOnly Canvas_FFI.requestAnimationFrame
 clientOnly Canvas_FFI.requestAnimationFrame2
 clientOnly Canvas_FFI.make_img
+clientOnly Canvas_FFI.setGlobalCompositeOperation
+clientOnly Canvas_FFI.clearRect
 jsFunc Canvas_FFI.make_rgb=UrWeb.Canvas.make_rgb
 jsFunc Canvas_FFI.getContext2d=UrWeb.Canvas.getContext2d
 jsFunc Canvas_FFI.setFillStyle=UrWeb.Canvas.setFillStyle
@@ -17,6 +19,8 @@ jsFunc Canvas_FFI.drawImage2=UrWeb.Canvas.drawImage2
 jsFunc Canvas_FFI.requestAnimationFrame=UrWeb.Canvas.requestAnimationFrame
 jsFunc Canvas_FFI.requestAnimationFrame2=UrWeb.Canvas.requestAnimationFrame2
 jsFunc Canvas_FFI.make_img=UrWeb.Canvas.make_img
+jsFunc Canvas_FFI.setGlobalCompositeOperation=UrWeb.Canvas.setGlobalCompositeOperation
+jsFunc Canvas_FFI.clearRect=UrWeb.Canvas.clearRect
 file /cvjsuw.js canvas.js
 script /cvjsuw.js
 
