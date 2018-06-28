@@ -1,60 +1,58 @@
 var UrWeb = {
-
     Canvas: {
-
 	getContext2d: function(id) {
 	    if(id == null) er("no ID");
 	    var e = document.getElementById(id);
 	    if(e == null) er("no element with such ID");
 	    if(e.getContext == null) er("no GetContext available for such ID");
-
 	    return e.getContext('2d');
 	},
-
+	
 	clearRect: function(ctx2d, x, y, width, height) {
-	    if(ctx2d == null) er("no ctx2d supplied");
-            
+	    if(ctx2d == null) er("no ctx2d supplied");            
 	    ctx2d.clearRect(x, y, width, height);
 	},
-
+	
 	fillRect: function(ctx2d, x, y, width, height) {
-	    if(ctx2d == null) er("no ctx2d supplied");
-            
+	    if(ctx2d == null) er("no ctx2d supplied");            
 	    ctx2d.fillRect(x, y, width, height);
 	},
-
-	make_rgb: function (r, g, b) {
-	    return "rgb(" + r + ", " + g + ", " + b + ")";
+	
+	make_rgba: function (r, g, b, a) {
+	    return "rgb(" + r + ", " + g + ", " + b + ", " + a + ")";
 	},
-
+	
 	make_img: function(url) {
 	    var img = new Image();
 	    img.src = url;
 	    return img;
 	},
-
+	
 	requestAnimationFrame: function(fn) {
 	    window.requestAnimationFrame((function() {
 		execF(fn);
 	    }));
 	},
-
+	
 	requestAnimationFrame2: function(fn) {
 	    var frameFn = null;
 	    frameFn = function() {
 		execF(execF(fn));
 		window.requestAnimationFrame(frameFn);	
-	    };
-	    
+	    };	    
 	    window.requestAnimationFrame(frameFn);
 	},
 	
 	setFillStyle: function (ctx2d, style) {
 	    if(ctx2d == null) er("no ctx2d supplied");
-
 	    ctx2d.fillStyle = style;
 	},
-
+	
+	setStrokeStyle: function (ctx2d, style) {
+	    if(ctx2d == null) er("no ctx2d supplied");
+	    ctx2d.strokeStyle = style;
+	},
+	
 	drawImage: function  (ctx2d, id, srcX, srcY, srcW, srcH, destX, destY, destW, destH){
 	    if(ctx2d == null) er("no ctx2d supplied");
 	    if(id == null) er("no ID");
@@ -64,12 +62,19 @@ var UrWeb = {
 	    
 	    ctx2d.drawImage(img, srcX, srcY, srcW, srcH, destX, destY, destW, destH);
 	},
-
+	
 	drawImage2: function  (ctx2d, img, destX, destY, destW, destH){
 	    if(ctx2d == null) er("no ctx2d supplied");
 	    if(img == null) er("no img supplied");
 	    
 	    ctx2d.drawImage(img, destX, destY, destW, destH);
+	},
+
+	drawImage22: function  (ctx2d, img, destX, destY){
+	    if(ctx2d == null) er("no ctx2d supplied");
+	    if(img == null) er("no img supplied");
+	    
+	    ctx2d.drawImage(img, destX, destY);
 	},
 	
 	setGlobalCompositeOperation: function (ctx2d, compOp) {
@@ -80,6 +85,51 @@ var UrWeb = {
 	    };
 	    
 	    ctx2d.globalCompositeOperation = compOps[compOp];
+	},
+	
+	save: function (ctx2d) {
+	    if(ctx2d == null) er("no ctx2d supplied");
+	    ctx2d.save();
+	},
+	
+	restore: function (ctx2d) {
+	    if(ctx2d == null) er("no ctx2d supplied");
+	    ctx2d.restore();
+	},
+	
+	translate: function (ctx2d, x, y) {
+	    if(ctx2d == null) er("no ctx2d supplied");
+	    ctx2d.translate(x, y);
+	},
+
+	beginPath: function (ctx2d) {
+	    ctx2d.beginPath();
+	},
+
+	stroke: function (ctx2d) {
+	    ctx2d.stroke();
+	},
+
+	rotate: function(ctx2d, angle) {
+	    ctx2d.rotate(angle);
+	},
+
+	arc: function (ctx2d, x, y, radius, startAngle, endAngle, antiClockWise) {
+	    ctx2d.arc(x, y, radius, startAngle, endAngle, antiClockWise);
+	}
+    },
+
+    Date: {
+	getDate : function() {
+	    return new Date();
+	},
+
+	getSeconds : function (dt) {
+	    return dt.getSeconds();
+	},
+
+	getMilliseconds : function (dt) {
+	    return dt.getMilliseconds();
 	}
 	
     }

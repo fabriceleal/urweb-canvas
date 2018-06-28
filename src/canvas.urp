@@ -1,27 +1,53 @@
 ffi canvas_FFI
-clientOnly Canvas_FFI.make_rgb
+ffi date
+clientOnly Canvas_FFI.make_rgba
 clientOnly Canvas_FFI.getContext2d
 clientOnly Canvas_FFI.setFillStyle
+clientOnly Canvas_FFI.save
+clientOnly Canvas_FFI.restore
+clientOnly Canvas_FFI.setStrokeStyle
 clientOnly Canvas_FFI.fillRect
 clientOnly Canvas_FFI.drawImage
 clientOnly Canvas_FFI.drawImage2
+clientOnly Canvas_FFI.drawImage22
 clientOnly Canvas_FFI.requestAnimationFrame
 clientOnly Canvas_FFI.requestAnimationFrame2
 clientOnly Canvas_FFI.make_img
 clientOnly Canvas_FFI.setGlobalCompositeOperation
 clientOnly Canvas_FFI.clearRect
-jsFunc Canvas_FFI.make_rgb=UrWeb.Canvas.make_rgb
+clientOnly Canvas_FFI.translate
+clientOnly Canvas_FFI.beginPath
+clientOnly Canvas_FFI.stroke
+clientOnly Canvas_FFI.arc
+clientOnly Canvas_FFI.rotate
+clientOnly Date.getDate
+clientOnly Date.seconds
+clientOnly Date.milliseconds
+jsFunc Canvas_FFI.save=UrWeb.Canvas.save
+jsFunc Canvas_FFI.restore=UrWeb.Canvas.restore
+jsFunc Canvas_FFI.make_rgba=UrWeb.Canvas.make_rgba
 jsFunc Canvas_FFI.getContext2d=UrWeb.Canvas.getContext2d
 jsFunc Canvas_FFI.setFillStyle=UrWeb.Canvas.setFillStyle
+jsFunc Canvas_FFI.setStrokeStyle=UrWeb.Canvas.setStrokeStyle
 jsFunc Canvas_FFI.fillRect=UrWeb.Canvas.fillRect
 jsFunc Canvas_FFI.drawImage=UrWeb.Canvas.drawImage
 jsFunc Canvas_FFI.drawImage2=UrWeb.Canvas.drawImage2
+jsFunc Canvas_FFI.drawImage22=UrWeb.Canvas.drawImage22
 jsFunc Canvas_FFI.requestAnimationFrame=UrWeb.Canvas.requestAnimationFrame
 jsFunc Canvas_FFI.requestAnimationFrame2=UrWeb.Canvas.requestAnimationFrame2
 jsFunc Canvas_FFI.make_img=UrWeb.Canvas.make_img
 jsFunc Canvas_FFI.setGlobalCompositeOperation=UrWeb.Canvas.setGlobalCompositeOperation
 jsFunc Canvas_FFI.clearRect=UrWeb.Canvas.clearRect
+jsFunc Canvas_FFI.translate=UrWeb.Canvas.translate
+jsFunc Canvas_FFI.beginPath=UrWeb.Canvas.beginPath
+jsFunc Canvas_FFI.stroke=UrWeb.Canvas.stroke
+jsFunc Canvas_FFI.arc=UrWeb.Canvas.arc
+jsFunc Canvas_FFI.rotate=UrWeb.Canvas.rotate
+jsFunc Date.getDate=UrWeb.Date.getDate
+jsFunc Date.seconds=UrWeb.Date.getSeconds
+jsFunc Date.milliseconds=UrWeb.Date.getMilliseconds
 file /cvjsuw.js canvas.js
 script /cvjsuw.js
 
 canvas
+math

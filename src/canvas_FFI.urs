@@ -1,7 +1,8 @@
-type rgb
+type rgba
      
-val make_rgb : int -> int -> int -> rgb
-
+val make_rgba : int -> int -> int -> float -> rgba
+val make_rgb : int -> int -> int -> rgba
+  
 type img
 
 val make_img : url -> transaction img
@@ -9,17 +10,21 @@ val make_img : url -> transaction img
 type canvas2d
 
 val clearRect : canvas2d -> int -> int -> int -> int -> transaction unit
-
-val fillRect : canvas2d -> int -> int -> int -> int -> transaction unit
-						       
-val setFillStyle : canvas2d -> rgb -> transaction unit
-				      
+val fillRect : canvas2d -> int -> int -> int -> int -> transaction unit						       
+val setFillStyle : canvas2d -> rgba -> transaction unit
+val setStrokeStyle : canvas2d -> rgba -> transaction unit
 val drawImage : canvas2d -> id -> int -> int -> int -> int -> int -> int -> int -> int -> transaction unit
-
-val drawImage2 : canvas2d -> img -> int -> int -> int -> int -> transaction unit
-											  
+val save : canvas2d -> transaction unit
+val restore : canvas2d -> transaction unit
+val drawImage2 : canvas2d -> img -> float -> float -> float -> float -> transaction unit
+val drawImage22 : canvas2d -> img -> float -> float -> transaction unit
+val translate : canvas2d -> float -> float -> transaction unit
+val rotate : canvas2d -> float -> transaction unit
+val arc : canvas2d -> float -> float -> float -> float -> float -> bool -> transaction unit
 val getContext2d : id -> transaction canvas2d
-
+val beginPath : canvas2d -> transaction unit
+val stroke : canvas2d -> transaction unit
+			 
 val requestAnimationFrame : (unit -> transaction unit) -> transaction unit
 
 val requestAnimationFrame2 : (unit -> transaction unit) -> transaction unit
