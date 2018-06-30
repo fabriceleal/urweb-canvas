@@ -26,6 +26,11 @@ clientOnly Canvas_FFI.scale
 clientOnly Canvas_FFI.setLineCap
 clientOnly Canvas_FFI.setLineWidth
 clientOnly Canvas_FFI.fill
+clientOnly Canvas_FFI.setImgOnLoad
+clientOnly Canvas_FFI.width
+clientOnly Canvas_FFI.height
+clientOnly Canvas_FFI.setInterval
+clientOnly Canvas_FFI.setTimeout
 clientOnly Date.getDate
 clientOnly Date.hours
 clientOnly Date.minutes
@@ -62,6 +67,11 @@ jsFunc Date.hours=UrWeb.Date.getHours
 jsFunc Date.milliseconds=UrWeb.Date.getMilliseconds
 jsFunc Canvas_FFI.setLineCap=UrWeb.Canvas.setLineCap
 jsFunc Canvas_FFI.setLineWidth=UrWeb.Canvas.setLineWidth
+jsFunc Canvas_FFI.setImgOnLoad=UrWeb.Canvas.setImgOnLoad
+jsFunc Canvas_FFI.width=UrWeb.Canvas.getImgWidth
+jsFunc Canvas_FFI.height=UrWeb.Canvas.getImgHeight
+jsFunc Canvas_FFI.setInterval=UrWeb.Canvas.setInterval
+jsFunc Canvas_FFI.setTimeout=UrWeb.Canvas.setTimeout
 file /cvjsuw.js canvas.js
 script /cvjsuw.js
 

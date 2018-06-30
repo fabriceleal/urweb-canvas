@@ -42,6 +42,24 @@ var UrWeb = {
 	    };	    
 	    window.requestAnimationFrame(frameFn);
 	},
+
+	setImgOnLoad : function(img, fn) {
+	    img.onload = function() {
+		execF(execF(fn));
+	    };
+	},
+
+	setInterval: function (fn, time) {
+	    setInterval(function() {
+		execF(execF(fn));
+	    }, time);
+	},
+
+	setTimeout: function (fn, time) {
+	    setTimeout(function() {
+		execF(execF(fn));
+	    }, time);
+	},
 	
 	setFillStyle: function (ctx2d, style) {
 	    if(ctx2d == null) er("no ctx2d supplied");
@@ -143,7 +161,16 @@ var UrWeb = {
 
 	fill: function (ctx2d) {
 	    ctx2d.fill();
+	},
+
+	getImgWidth: function (img) {
+	    return img.width;
+	},
+
+	getImgHeight: function (img) {
+	    return img.height;
 	}
+	
     },
 
     Date: {

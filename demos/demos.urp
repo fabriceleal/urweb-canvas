@@ -1,6 +1,7 @@
 allow url https://mdn.mozillademos.org/files/1443/Canvas_moon.png
 allow url https://mdn.mozillademos.org/files/1429/Canvas_earth.png
 allow url https://mdn.mozillademos.org/files/1456/Canvas_sun.png
+allow url https://mdn.mozillademos.org/files/4553/Capitan_Meadows,_Yosemite_National_Park.jpg
 library ../src/canvas
 
 demos

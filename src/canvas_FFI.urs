@@ -10,10 +10,13 @@ val make_rgb : int -> int -> int -> rgba
 type img
 
 val make_img : url -> transaction img
-		      
+val width : img -> float
+val height : img -> float
+		    
 type canvas2d
 
-val clearRect : canvas2d -> int -> int -> int -> int -> transaction unit
+val clearRect : canvas2d -> float -> float -> float -> float -> transaction unit
+								       
 val fillRect : canvas2d -> int -> int -> int -> int -> transaction unit						       
 val setFillStyle : canvas2d -> rgba -> transaction unit
 val setStrokeStyle : canvas2d -> rgba -> transaction unit
@@ -44,6 +47,12 @@ val scale : canvas2d -> float -> float -> transaction unit
 
 val setLineWidth : canvas2d -> float -> transaction unit
 
+val setImgOnLoad : img -> (unit -> transaction unit) -> transaction unit 
+
+val setInterval : (unit -> transaction unit) -> int -> transaction unit
+
+val setTimeout : (unit -> transaction unit) -> int -> transaction unit
+						       
 datatype lineCap =
 	 Round
 

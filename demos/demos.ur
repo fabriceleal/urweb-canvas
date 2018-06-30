@@ -23,7 +23,7 @@ fun solarSystem () =
 		fun draw () =
 		    ctx <- getContext2d c;	    
 		    setGlobalCompositeOperation ctx DestinationOver;
-		    clearRect ctx 0 0 300 300;
+		    clearRect ctx 0.0 0.0 300.0 300.0;
 
 		    setFillStyle ctx (make_rgba 0 0 0 0.4);
 		    setStrokeStyle ctx (make_rgba 0 153 255 0.4);
@@ -61,6 +61,7 @@ fun solarSystem () =
 	return
 	    <xml>
 	      <body onload={loadPage()}>
+		<h1>Solar System</h1>
 		<canvas id={c} height=300 width=300>
 		</canvas>
 	      </body>
@@ -115,7 +116,7 @@ fun clock () =
 		    now <- getDate;
 		   
 		    save ctx;
-		    clearRect ctx 0 0 150 150; 
+		    clearRect ctx 0.0 0.0 150.0 150.0; 
 		    translate ctx 75.0 75.0;
 		    scale ctx 0.4 0.4; 
 		    rotate ctx ((-1.0) * pi / 2.0); 
@@ -204,8 +205,110 @@ fun clock () =
 	return
 	    <xml>
 	      <body onload={loadPage()}>
+		<h1>Clock</h1>
 		<canvas id={c} height=300 width=300>
 		</canvas>
 	      </body>
 	    </xml>
     end
+
+fun loopingPanorama () =
+    c <- fresh;
+    let
+	val canvasW = 800.0
+	val canvasH = 200.0
+	val speed = 30
+	val scale = 1.05
+	val y = (-4.5)
+	val dx = 0.75
+	
+	fun loadPage () =
+	    ctx <- getContext2d c;
+	    img <- make_img(bless("https://mdn.mozillademos.org/files/4553/Capitan_Meadows,_Yosemite_National_Park.jpg"));
+
+	    
+	    
+	    let
+		(*if imgW > canvasW then
+				 canvasW - imgW
+			     else
+				 0.0*) 
+		
+		fun imgLoad () =
+		    let
+			val imgH = (height img) * scale
+			val imgW = (width img) * scale
+			
+			val clearX = if imgW > canvasW then
+					 imgW
+				     else
+					 canvasW
+
+			val clearY = if imgH > canvasH then
+					 imgH
+				     else
+					 canvasH
+
+			val x = if imgW > canvasW then
+				    canvasW - imgW
+				else
+				    0.0
+				   
+			fun draw x =
+			    fn _ =>
+			       clearRect ctx 0.0 0.0 clearX clearY ;
+			       
+			       if imgW <= canvasW then
+				   let
+				       val x2 = if x > canvasW then
+						    (-imgW) + x
+						else
+						    x
+				   in
+				       i <- (if x2 > 0.0 then
+						 drawImage2 ctx img ((-imgW) + x2) y imgW imgH
+					     else
+						 return ());
+				       i2 <- (if x2 - imgW > 0.0 then
+						  drawImage2 ctx img ((-imgW) * 2.0 + x2) y imgW imgH
+					      else
+						  return ());
+
+				       drawImage2 ctx img x2 y imgW imgH;
+				       setTimeout (draw (x2 + dx)) speed
+				   end
+			       else
+				   let
+				       val x2 = if x > canvasW then
+						    canvasW - imgW
+						else
+						    x
+				   in
+				       i <- (if x2 > (canvasW - imgW) then
+						 drawImage2 ctx img (x2 - imgW + 1.0) y imgW imgH
+					     else
+						 return ());
+
+				       drawImage2 ctx img x2 y imgW imgH;
+				       setTimeout (draw (x2 + dx)) speed
+				   end (**)
+		    in
+							 
+			setTimeout (draw x) speed
+		    end
+	
+	    in    
+		setImgOnLoad img imgLoad;	    
+		return ()
+	    end
+    in
+	return
+	    <xml>
+	      <body onload={loadPage()}>
+		<h1>Looping panorama</h1>
+		<canvas id={c} height=200 width=800>
+		</canvas>
+	      </body>
+	    </xml>
+    end
+    
