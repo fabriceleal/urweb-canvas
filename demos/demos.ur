@@ -110,7 +110,7 @@ fun clock () =
 		    if f > 12 then
 			f - 12
 		    else
-			f (**)
+			f
 			
 		and draw () =
 		    now <- getDate;
@@ -135,7 +135,6 @@ fun clock () =
 		    setLineWidth ctx 5.0;
 		    doTimesAux 0 59 drawMinuteMark;
 		    restore ctx;
-
 		    
 		    let
 			val sec = float (seconds now)
@@ -224,16 +223,8 @@ fun loopingPanorama () =
 	
 	fun loadPage () =
 	    ctx <- getContext2d c;
-	    img <- make_img(bless("https://mdn.mozillademos.org/files/4553/Capitan_Meadows,_Yosemite_National_Park.jpg"));
-
-	    
-	    
-	    let
-		(*if imgW > canvasW then
-				 canvasW - imgW
-			     else
-				 0.0*) 
-		
+	    img <- make_img(bless("https://mdn.mozillademos.org/files/4553/Capitan_Meadows,_Yosemite_National_Park.jpg"));	    
+	    let		
 		fun imgLoad () =
 		    let
 			val imgH = (height img) * scale
@@ -291,7 +282,7 @@ fun loopingPanorama () =
 
 				       drawImage2 ctx img x2 y imgW imgH;
 				       setTimeout (draw (x2 + dx)) speed
-				   end (**)
+				   end
 		    in
 							 
 			setTimeout (draw x) speed
