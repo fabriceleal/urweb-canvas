@@ -4,6 +4,12 @@ open Date
      
 val pi = 3.141592653589793
 
+val black = make_rgba 0 0 0 1.0
+
+val white = make_rgba 255 255 255 1.0
+
+val transparent = make_rgba 0 0 0 0.0
+	    
 fun solarSystem () =
     c <- fresh;
     let
@@ -26,7 +32,7 @@ fun solarSystem () =
 		    
 		    (** earth **)
 		    time <- getDate; 
-		    rotate ctx (((2.0 * pi) / 60.0) * (float (seconds time)) + ((2.0 * pi / 60000.0) * (float (milliseconds time)))); (**  **)
+		    rotate ctx (((2.0 * pi) / 60.0) * (float (seconds time)) + ((2.0 * pi / 60000.0) * (float (milliseconds time))));
 		    translate ctx 105.0 0.0;
 		    fillRect ctx 0 (-12) 50 24;
 		    drawImage22 ctx earth (-12.0) (-12.0);
@@ -68,19 +74,126 @@ fun clock () =
 	fun loadPage () =
 	    ctx <- getContext2d c;
 	    let
-		fun draw () =
+		fun drawMark () =
+		    beginPath ctx;
+		    rotate ctx (pi / 6.0);
+		    moveTo ctx 100 0;
+		    lineTo ctx 120 0;
+		    stroke ctx
+
+		and drawMinuteMark (i : int) =
+		    if (mod i 5) = 0 then			    
+			rotate ctx (pi / 30.0)
+		    else
+			beginPath ctx;
+			moveTo ctx 117 0;
+			lineTo ctx 120 0;
+			stroke ctx;
+			rotate ctx (pi / 30.0)
+
+		and doTimesAux i n (func : int -> transaction unit) =
+		    if n > 0 then
+			func i;
+			doTimesAux (i + 1) (n - 1) func
+		    else
+			func i
+		    	
+		and doTimes n (func : unit -> transaction unit) =		    
+		    if n > 0 then
+			func ();
+			doTimes (n - 1) func
+		    else
+			func ()
+
+		and fix12 f =
+		    if f > 12 then
+			f - 12
+		    else
+			f (**)
+			
+		and draw () =
 		    now <- getDate;
-		    (*
+		   
 		    save ctx;
-		    clearRect ctx 0 0 150 150;
-		    translate ctx 75 75;
-		    scale ctx 0.4 0.4;
-		    rotate ctx (-1.0 * pi / 2.0);
+		    clearRect ctx 0 0 150 150; 
+		    translate ctx 75.0 75.0;
+		    scale ctx 0.4 0.4; 
+		    rotate ctx ((-1.0) * pi / 2.0); 
 		    setStrokeStyle ctx black;
 		    setFillStyle ctx white;
-		    setLineWidth ctx 8.0;
+		    setLineWidth ctx 8.0; 
 		    setLineCap ctx Round;
-		    *)
+
+		    (* hour marks *) 
+		    save ctx;
+		    doTimes 11 drawMark;
+		    restore ctx;
+
+		    (* minute marks *)
+		    save ctx;
+		    setLineWidth ctx 5.0;
+		    doTimesAux 0 59 drawMinuteMark;
+		    restore ctx;
+
+		    
+		    let
+			val sec = float (seconds now)
+			val min = float (minutes now)
+			val hr = float (fix12 (hours now))
+		    in
+			setFillStyle ctx black;
+
+			(** write hours **)
+			
+			save ctx;
+			rotate ctx (hr * (pi / 6.0) + (pi / 360.0) * min + (pi / 21600.0) * sec);
+			setLineWidth ctx 14.0;
+			beginPath ctx;
+			moveTo ctx (-20) 0;
+			lineTo ctx 80 0;
+			stroke ctx;
+			restore ctx;
+
+		    (** write minutes **)
+			save ctx;
+			rotate ctx ((pi / 30.0) * min + (pi / 1800.0) * sec);
+			setLineWidth ctx 10.0;
+			beginPath ctx;
+			moveTo ctx (-28) 0;
+			lineTo ctx 112 0;
+			stroke ctx;
+			restore ctx;
+
+		    (** write seconds **)
+			save ctx;
+			rotate ctx (sec * pi / 30.0);
+			setStrokeStyle ctx (make_rgba 212 0 0 1.0);
+			setFillStyle ctx (make_rgba 212 0 0 1.0);
+			setLineWidth ctx 6.0;
+			beginPath ctx;
+			moveTo ctx (-30) 0;
+			lineTo ctx 83 0;
+			stroke ctx;
+			beginPath ctx;
+			arc ctx 0.0 0.0 10.0 0.0 (pi * 2.0) True;
+			fill ctx;
+			beginPath ctx;
+			arc ctx 95.0 0.0 10.0 0.0 (pi * 2.0) True;
+			stroke ctx;
+			setFillStyle ctx transparent;
+			arc ctx 0.0 0.0 3.0 0.0 (pi * 2.0) True;
+			fill ctx;
+			restore ctx
+		    end;
+		    
+		    beginPath ctx;
+		    setLineWidth ctx 14.0;
+		    setStrokeStyle ctx (make_rgba 50 95 162 1.0);
+		    arc ctx 0.0 0.0 142.0 0.0 (pi * 2.0) True;
+		    stroke ctx;
+		    
+		    restore ctx;
+		    
 		    return ()
 	    in
 		requestAnimationFrame2 draw;

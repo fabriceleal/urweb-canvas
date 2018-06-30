@@ -2,7 +2,11 @@ type rgba
      
 val make_rgba : int -> int -> int -> float -> rgba
 val make_rgb : int -> int -> int -> rgba
-  
+
+(*val white : rgba*)
+
+(*val black : rgba*)
+				    
 type img
 
 val make_img : url -> transaction img
@@ -24,13 +28,27 @@ val arc : canvas2d -> float -> float -> float -> float -> float -> bool -> trans
 val getContext2d : id -> transaction canvas2d
 val beginPath : canvas2d -> transaction unit
 val stroke : canvas2d -> transaction unit
-			 
+val fill : canvas2d -> transaction unit
+		       
 val requestAnimationFrame : (unit -> transaction unit) -> transaction unit
 
 val requestAnimationFrame2 : (unit -> transaction unit) -> transaction unit
 							  
 val canvas : bodyTag ([Width = int, Height = int] ++ boxAttrs)
-	     
+
+val lineTo : canvas2d -> int -> int -> transaction unit
+
+val moveTo : canvas2d -> int -> int -> transaction unit
+
+val scale : canvas2d -> float -> float -> transaction unit
+
+val setLineWidth : canvas2d -> float -> transaction unit
+
+datatype lineCap =
+	 Round
+
+val setLineCap : canvas2d -> lineCap -> transaction unit
+						
 datatype compositeOperation =
 	 DestinationOver
 	     (*

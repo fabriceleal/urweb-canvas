@@ -110,12 +110,39 @@ var UrWeb = {
 	    ctx2d.stroke();
 	},
 
-	rotate: function(ctx2d, angle) {
+	rotate: function (ctx2d, angle) {
 	    ctx2d.rotate(angle);
 	},
 
 	arc: function (ctx2d, x, y, radius, startAngle, endAngle, antiClockWise) {
 	    ctx2d.arc(x, y, radius, startAngle, endAngle, antiClockWise);
+	},
+
+	moveTo: function (ctx2d, x, y) {
+	    ctx2d.moveTo(x, y);
+	},
+
+	lineTo: function (ctx2d, x, y) {
+	    ctx2d.lineTo(x, y);
+	},
+
+	scale: function (ctx2d, x, y) {
+	    ctx2d.scale(x, y);
+	},
+
+	setLineWidth: function (ctx2d, width) {
+	    ctx2d.lineWidth = width;
+	},
+
+	setLineCap: function (ctx2d, cap) {
+	    var caps = {
+		Round: 'round'
+	    };
+	    ctx2d.lineCap = caps[cap];
+	},
+
+	fill: function (ctx2d) {
+	    ctx2d.fill();
 	}
     },
 
@@ -130,6 +157,14 @@ var UrWeb = {
 
 	getMilliseconds : function (dt) {
 	    return dt.getMilliseconds();
+	},
+
+	getHours: function (dt) {
+	    return dt.getHours();
+	},
+
+	getMinutes: function (dt) {
+	    return dt.getMinutes();
 	}
 	
     }

@@ -20,7 +20,15 @@ clientOnly Canvas_FFI.beginPath
 clientOnly Canvas_FFI.stroke
 clientOnly Canvas_FFI.arc
 clientOnly Canvas_FFI.rotate
+clientOnly Canvas_FFI.lineTo
+clientOnly Canvas_FFI.moveTo
+clientOnly Canvas_FFI.scale
+clientOnly Canvas_FFI.setLineCap
+clientOnly Canvas_FFI.setLineWidth
+clientOnly Canvas_FFI.fill
 clientOnly Date.getDate
+clientOnly Date.hours
+clientOnly Date.minutes
 clientOnly Date.seconds
 clientOnly Date.milliseconds
 jsFunc Canvas_FFI.save=UrWeb.Canvas.save
@@ -43,9 +51,17 @@ jsFunc Canvas_FFI.beginPath=UrWeb.Canvas.beginPath
 jsFunc Canvas_FFI.stroke=UrWeb.Canvas.stroke
 jsFunc Canvas_FFI.arc=UrWeb.Canvas.arc
 jsFunc Canvas_FFI.rotate=UrWeb.Canvas.rotate
+jsFunc Canvas_FFI.lineTo=UrWeb.Canvas.lineTo
+jsFunc Canvas_FFI.moveTo=UrWeb.Canvas.moveTo
+jsFunc Canvas_FFI.scale=UrWeb.Canvas.scale
+jsFunc Canvas_FFI.fill=UrWeb.Canvas.fill
 jsFunc Date.getDate=UrWeb.Date.getDate
 jsFunc Date.seconds=UrWeb.Date.getSeconds
+jsFunc Date.minutes=UrWeb.Date.getMinutes
+jsFunc Date.hours=UrWeb.Date.getHours
 jsFunc Date.milliseconds=UrWeb.Date.getMilliseconds
+jsFunc Canvas_FFI.setLineCap=UrWeb.Canvas.setLineCap
+jsFunc Canvas_FFI.setLineWidth=UrWeb.Canvas.setLineWidth
 file /cvjsuw.js canvas.js
 script /cvjsuw.js
 
