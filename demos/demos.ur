@@ -303,3 +303,11 @@ fun loopingPanorama () =
 	    </xml>
     end
     
+fun index () =
+    return <xml>
+      <body>
+	<a link={solarSystem ()}>solar system</a>
+	<a link={clock ()}>clock</a>
+	<a link={loopingPanorama ()}>looping panorama</a>
+      </body>
+    </xml>
