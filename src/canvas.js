@@ -20,7 +20,7 @@ var UrCanvas = {
     },
     
     make_rgba: function (r, g, b, a) {
-	return "rgb(" + r + ", " + g + ", " + b + ", " + a + ")";
+	return "rgba(" + r + ", " + g + ", " + b + ", " + a + ")";
     },
     
     make_img: function(url) {
