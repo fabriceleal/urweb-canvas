@@ -30,6 +30,7 @@ val rotate : canvas2d -> float -> transaction unit
 val arc : canvas2d -> float -> float -> float -> float -> float -> bool -> transaction unit
 val getContext2d : id -> transaction canvas2d
 val beginPath : canvas2d -> transaction unit
+val closePath : canvas2d -> transaction unit
 val stroke : canvas2d -> transaction unit
 val fill : canvas2d -> transaction unit
 		       
@@ -42,6 +43,8 @@ val canvas : bodyTag ([Width = int, Height = int] ++ boxAttrs)
 val lineTo : canvas2d -> int -> int -> transaction unit
 
 val moveTo : canvas2d -> int -> int -> transaction unit
+
+val drawLine : canvas2d -> int -> int -> int -> int -> transaction unit
 
 val scale : canvas2d -> float -> float -> transaction unit
 
